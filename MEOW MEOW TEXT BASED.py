@@ -68,7 +68,7 @@ while True:
 
                 system_text("Please select the LVL\n")
                 system_text2("1. Level 1\n2. Level 2\n3. Level 3")
-                LVLSelected = input("Please enter the number of the level: ")
+                LVLSelected = input("\nPlease enter the number of the level: ")
                 clear()
 
                 #LEVEL SELECTION
@@ -80,9 +80,10 @@ while True:
                         system_text("Select you Character\n")
 
                         for name, stats in characters.items():
-                            pass
+                            print(f"\n{stats['NAME']}")
                             for key, value in stats.items():
-                                print(f"{key}: {value}")
+                                if key != "NAME":
+                                    print(f"{key}: {value}")
 
                         Character_1 = input("\nEnter the name of your character: ")
                         clear()
@@ -90,71 +91,43 @@ while True:
                         #CHARACTER SELECTION
                         while True:
                             found = False
+                            for name, stats in characters.items():
+                                if Character_1.upper() == stats["NAME"].upper():
+                                    clear()
+                                    loading("\nRedirecting")
 
-                            if Character_1.upper() == stats["CharacterNum1"]["NAME"].upper():
-                                loading("\nRedirecting")
+                                    start("Game Start")
+                                    system_text2(f"Starting World Number {GameSelected}")
+                                    system_text2(f"Level {LVLSelected}")
 
-                                start("Game Start")
-                                print(f"Starting World {GameSelected}")
-                                print(f"Level {LVLSelected}")
-                                for key, value in stats.items():
-                                    print(f"{key}: {value}")
-                                found = True
+                                    print(f"\n{stats['NAME']}")
+                                    for key, value in stats.items():
+                                        if key != "NAME":
+                                            print(f"{key}:{value}")
+
+
+                                    #start na quiz dodong
+                                
+
+
+
+
+                            if found:
                                 break
-                                if found:
-                                    break
-
-
-
-                            elif Character_1.upper() == stats["CharacterNum2"]["NAME"].upper():
-                                loading("\nRedirecting")
-
-                                start("Game Start")
-                                print(f"Starting World {GameSelected}")
-                                print(f"Level {LVLSelected}")
-                                for key, value in stats.items():
-                                    print(f"{key}: {value}")
-                                found = True
-                                break
-                                if found:
-                                    break
-
-
-
-                            elif Character_1.upper() == stats["CharacterNum3"]["NAME"].upper():
-                                loading("\nRedirecting")
-
-                                start("Game Start")
-                                print(f"Starting World {GameSelected}")
-                                print(f"Level {LVLSelected}")
-                                for key, value in stats.items():
-                                    print(f"{key}: {value}")
-                                found = True
-                                break
-                                if found:
-                                    break
-
-
-
-
-
-
-
-
-
 
                             else: 
                                 clear()
                                 system_text("\nInvalid choice! Please try again.\n")
-                                
+                                    
                                 for name, stats in characters.items():
-                                    pass
+                                    print(f"\n{stats['NAME']}")
                                     for key, value in stats.items():
-                                        print(f"  {key}: {value}")
+                                        if key != "NAME":
+                                            print(f"{key}: {value}")
 
                                 Character_1 = input("\nEnter the name of your character: ")
                                 
-
+                        back = input("\nDo you want to go back to World Selection? (y/n): ")
 
                     elif LVLSelected == "2":
                         clear()
@@ -192,7 +165,7 @@ while True:
                         clear()
                         system_text("\nInvalid choice! Please try again.\n")
                         system_text2("1. Level 1\n2. Level 2\n3. Level 3")
-                        LVLSelected = input("Please enter the number of the level: ")
+                        LVLSelected = input("\nPlease enter the number of the level: ")
 
 
             #Working in Progress

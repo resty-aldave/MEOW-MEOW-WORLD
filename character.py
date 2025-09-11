@@ -1,19 +1,19 @@
 
 characters = { 
-    "Character One" : {
-        "\nNAME": "Lord Flufflebottom",
+    "Character One" : {  #Mao ni ang name didto dapit sa for loop
+        "NAME": "Lord Flufflebottom",
         "HP": 100,
         "ATK":50,
-        "DEF":8
+        "DEF":8   #Tapos mao na na siya nag stats hangtud sa NAME to DEF while ang key is the NAME ug value is Lord Flufflebottom
     },
     "Character Two" : {
-        "\nNAME": "Whiskerbyte",
+        "NAME": "Whiskerbyte",
         "HP": 100,
         "ATK":30,
         "DEF":5
     },
     "Character Three" : {
-        "\nNAME": "Purrlock Holme",
+        "NAME": "Purrlock Holme",
         "HP": 100,
         "ATK":20,
         "DEF":2

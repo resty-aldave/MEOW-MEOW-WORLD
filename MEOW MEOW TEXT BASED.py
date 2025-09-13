@@ -52,9 +52,8 @@ def ask_question(question, correct_answer, stats):
     wronganswercount = 0
     #Ask a T/F question and update stats if wrong.
     while True:
-        system_text("Please wait...")
         clear2()
-        ans = input(f"{question}? (T/F): ").upper()
+        ans = input(f"{system_text(question)}? (T/F): ").upper()
         if ans not in ["T", "F"]:
             clear()
             print("Invalid input, type T or F only.\n")
@@ -69,18 +68,31 @@ def ask_question(question, correct_answer, stats):
 
             wronganswercount += 1
 
-            # Deduct HP
+            # Minus HP
             DMG = 10*wronganswercount
             stats["HP"] -= DMG
+            stats["HP"] += ((stats["DEF"]/100)*stats["HP"])
             print(f"{stats['NAME']} (Updated Stats)")
             for key, value in stats.items():
                 if key != "NAME":
-                    print(f"{key}: {value}")
+                    print(f"{key}:{round(value)}")
             print()
 
             if stats["HP"] <= 0:
+                clear()
                 print("\n💀 GAME OVER! You have no HP left.\n")
+                print(f"{stats['NAME']} (Updated Stats)")
+                print("HP: 0")
+                for key, value in stats.items():
+                    if key != "NAME":
+                        pass
+                        if key != "HP":
+                            print(f"{key}: {value}")
+                print()
+                print()
                 sys.exit()
+
+
 
 def levelcomplete(text, delay = 0.05):
     for char in text:
@@ -146,7 +158,7 @@ while True:
                         #CHARACTER SELECTION
                         while True:
                             found = False
-                            for name, stats in characters.items():
+                            for Cnum, stats in characters.items():
                                 if Character_1.upper() == stats["NAME"].upper():
                                     clear()
                                     loading("\nRedirecting")
@@ -161,11 +173,20 @@ while True:
                                             print(f"{key}: {value}")
 
                                     # Quiz
-                                    loading("\nStarting", delay=0.5)
-                                    
+                                    loading("\nStarting", delay=1)
+
+
+                                    #add a story here
+
+
+
+
+
+
+                                    #based the question on the story
                                     for key, qa in lvl1.items():
                                         ask_question(qa["question"], qa["answer"], stats)
-                                        loading("Next", delay=1)
+                                        loading("Next", delay=3)
 
                                         
 
@@ -174,15 +195,15 @@ while True:
 
 
                                     found = True
-                                    break   # stop looping characters since we found one
+                                    break   # this will stop looping characters since we found one
 
                             if found:
-                                break   # exit character selection loop
+                                break   # this exit character selection loop
 
                             else:
                                 clear()
                                 system_text("\nInvalid choice! Please try again.\n")
-                                for name, stats in characters.items():
+                                for Cnum, stats in characters.items():
                                     print(f"\n{stats['NAME']}")
                                     for key, value in stats.items():
                                         if key != "NAME":

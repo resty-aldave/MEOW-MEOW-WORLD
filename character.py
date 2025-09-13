@@ -1,6 +1,6 @@
 
 characters = { 
-    "Character One" : {  #Mao ni ang name didto dapit sa for loop
+    "Character One" : {  #Mao ni ang Cnum didto dapit sa for loop
         "NAME": "Lord Flufflebottom",
         "HP": 100,
         "ATK":50,

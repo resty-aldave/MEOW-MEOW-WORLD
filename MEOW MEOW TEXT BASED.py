@@ -8,12 +8,13 @@ from Question import lvl1
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
-def clear2 (delay = 3):
+def clear2 (delay = 2):
     time.sleep(delay)
     os.system("cls" if os.name == "nt" else "clear")
 
 
 def loading(text="Loading", dots=3, delay=0.1):#change to 0.5
+    print()
     for i in range(dots):
         sys.stdout.write("\r" + text + "." * (i+1))
         sys.stdout.flush()
@@ -53,18 +54,19 @@ def ask_question(question, correct_answer, stats):
     #Ask a T/F question and update stats if wrong.
     while True:
         clear2()
-        ans = input(f"{system_text(question)}? (T/F): ").upper()
+        system_text(f"{question}?")
+        ans = input("\n(T/F): ").upper()
         if ans not in ["T", "F"]:
             clear()
             print("Invalid input, type T or F only.\n")
             continue
 
         if ans == correct_answer:
-            print("✅ Correct!\n")
+            print("\n✅ Correct!\n")
             return True
         
         else:
-            print("❌ Incorrect!\n")
+            print("\n❌ Incorrect!\n")
 
             wronganswercount += 1
 
@@ -173,7 +175,7 @@ while True:
                                             print(f"{key}: {value}")
 
                                     # Quiz
-                                    loading("\nStarting", delay=1)
+                                    loading("Starting", delay=1)
 
 
                                     #add a story here
@@ -186,7 +188,7 @@ while True:
                                     #based the question on the story
                                     for key, qa in lvl1.items():
                                         ask_question(qa["question"], qa["answer"], stats)
-                                        loading("Next", delay=3)
+                                        loading("Next", delay=1)
 
                                         
 
@@ -212,16 +214,6 @@ while True:
 
                         # After quiz ends → go back to world selection question
                         levelcomplete("Game done, congratiolations on completing this level!!!🎉")
-
-                        back = input("\nDo MEOWyou want to go back to World Selection? (y/n): ")
-                        if back.lower() == "y":
-                            clear()
-                            system_text("\nThanks for playing! Goodbye.")
-                            break   # exit game
-
-                        elif back.lower() == "n":
-                            system_text("\nThanks for playing! Goodbye.")
-                            break   # exit game
 
 
                     elif LVLSelected == "2":

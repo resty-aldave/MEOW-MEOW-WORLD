@@ -56,7 +56,7 @@ def ask_question(question, correct_answer, stats):
         clear2()
         system_text(f"{question}?")
         ans = input("\n(T/F): ").upper()
-        if ans not in ["T", "F"]:
+        if ans not in ["T", "F"]:#change this when you add the story
             clear()
             print("Invalid input, type T or F only.\n")
             continue

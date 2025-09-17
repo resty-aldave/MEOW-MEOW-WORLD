@@ -49,6 +49,14 @@ def system_text2(text, delay=0.01, color="\033[97m"):#change to 0.3
         time.sleep(delay)
     print()
 
+def paragraph(text, delay=0.1, color="\033[97m"):
+    for char in text:
+        sys.stdout.write(color + char + "\033[97m")
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()
+
+
 def ask_question(question, correct_answer, stats):
     wronganswercount = 0
     #Ask a T/F question and update stats if wrong.
@@ -95,6 +103,35 @@ def ask_question(question, correct_answer, stats):
                 sys.exit()
 
 
+def randomHpDeductionFighting(text, stats):
+
+    system_text(text)
+
+    DMG = random.randint(20, 25)
+    stats["HP"] -= DMG
+    stats["HP"] += ((stats["DEF"]/100)*stats["HP"])
+
+    print(f"{stats['NAME']} (Updated Stats)")
+
+    for key, value in stats.items():
+        if key != "NAME":
+            print(f"{key}:{round(value)}")
+    print()
+
+    if stats["HP"] <= 0:
+        clear()
+        print("\n💀 GAME OVER! You have no HP left.\n")
+        print(f"{stats['NAME']} (Updated Stats)")
+        print("HP: 0")
+        for key, value in stats.items():
+            if key != "NAME":
+                pass
+                if key != "HP":
+                    print(f"{key}: {value}")
+            print()
+            print()
+            sys.exit()
+
 
 def levelcomplete(text, delay = 0.05):
     for char in text:
@@ -102,7 +139,7 @@ def levelcomplete(text, delay = 0.05):
         sys.stdout.flush()
         time.sleep(delay)
     print()
-
+    clear2()
     print("\nExiting in:\n")
     for i in range(3, 0, -1):
         print(i)
@@ -110,19 +147,26 @@ def levelcomplete(text, delay = 0.05):
     print()
     sys.exit()
 
+def title(text, delay=0.01, color="\033[94m"):#change to 0.5
+    for char in text:
+        sys.stdout.write(color + char + "\033[94m")
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()
+
 
 
 clear()
 welcome_text("Welcome to MEOW MEOW world! 🐈")
 system_text("\nPlease select the world you want to play....",)
-system_text2("1. Purrlantic Shores\n2. Whiskerwood Hollow\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
+system_text2("\n1. Purrlantic Shores\n2. Whiskerwood Hollow\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
 GameSelected = input("Enter world number to start: ")
 clear()
 
 #WORLD SELECTION
 while True:  
     if GameSelected == "1":
-        loading("\nRedirecting")
+        loading("Redirecting")
 
         system_text("Please select how many players\n")
         system_text2("1. One Player \n2. Two Player")
@@ -133,7 +177,7 @@ while True:
         while True: 
             if HowManyPlayer == "1":
                 clear()
-                loading("\nRedirecting")
+                loading("Redirecting")
 
                 system_text("Please select the LVL\n")
                 system_text2("1. Level 1\n2. Level 2\n3. Level 3")
@@ -144,7 +188,7 @@ while True:
                 while True: 
                     if LVLSelected == "1":
                         clear()
-                        loading("\nRedirecting")
+                        loading("Redirecting")
 
                         system_text("Select you Character\n")
 
@@ -163,7 +207,7 @@ while True:
                             for Cnum, stats in characters.items():
                                 if Character_1.upper() == stats["NAME"].upper():
                                     clear()
-                                    loading("\nRedirecting")
+                                    loading("Redirecting")
 
                                     start("Game Start")
                                     system_text2(f"Starting World Number {GameSelected}")
@@ -174,26 +218,48 @@ while True:
                                         if key != "NAME":
                                             print(f"{key}: {value}")
 
-                                    # Quiz
+                                    # STORY START
                                     loading("Starting", delay=1)
 
 
                                     #add a story here
+                                    title("Dawn on the Shores")
 
+                                    paragraph("\nThe morning sun rose slowly over the Purrlantic waves, \n" 
+                                                "but the day already felt weak. On the cliffs of the Goldwhisker Highlands, \n" 
+                                                "Lord Flufflebottom stood alone in exile. The sea wind blew through his fur \n" 
+                                                "as he looked at a parchment with the names of traitors who had cast him out. \n" 
+                                                "He asked himself if he should choose justice or revenge.")
+                                    
+                                    #boss level
+                                    #put auto deduct health
+                                    randomHpDeductionFighting("Fighting Wave 1\n", stats)
+                                    
+                                    clear2()
+                                    
 
+                                    paragraph("In the neon streets of Nyanctropolis, Whiskerbyte opened her eyes. \n"
+                                              "A glowing file floated in front of her: PROJECT WHISKERBYTE: TERMINATE. \n"
+                                              "For the first time, she felt real fear. Was she created as a mistake or as a weapon?")
+                                    
+                                    #boss level
+                                    #put auto deduct health
+                                    randomHpDeductionFighting("Fighting Wave 2\n", stats)
 
+                                    clear2()
+                                    
+                                    paragraph("Deep inside Whimwood, Jinxpaw woke from her rest. The forest moved with her mood; \n" 
+                                    "trees leaned down, rivers bubbled backward, and birds cried loudly in the sky. \n" 
+                                    "Each breath she took made the Shores shake. No one knew the storm she might bring.")
 
-
-
-                                    #based the question on the story
-                                    for key, qa in lvl1.items():
-                                        ask_question(qa["question"], qa["answer"], stats)
-                                        loading("Next", delay=1)
-
-                                        
-
-
-
+                                    #boss level
+                                    #put auto deduct health
+                                    randomHpDeductionFighting("Fighting Wave 3\n", stats)
+                                    
+                                    clear2()
+                                    
+                                    
+                                    paragraph("The day looked bright, but under the surface, the first cracks began to spread.")
 
 
                                     found = True
@@ -213,41 +279,41 @@ while True:
                                 Character_1 = input("\nEnter the name of your character: ")
 
                         # After quiz ends → go back to world selection question
-                        levelcomplete("Game done, congratiolations on completing this level!!!🎉")
+                        levelcomplete("\nGame done, congratiolations on completing this level!!!🎉")
 
 
                     elif LVLSelected == "2":
                         clear()
-                        system_text("\nStill in work")
+                        system_text("Still in work")
 
                         back = input("\nDo you want to go back to Level Selection? (y/n): ")
                         if back.lower() == "y":
                             clear()
                             system_text("Please select the LVL\n")
                             system_text2("1. Level 1\n2. Level 2\n3. Level 3")
-                            LVLSelected = input("Please enter the number of the level: ")
+                            LVLSelected = input("\nPlease enter the number of the level: ")
                             continue   # go back to level selection
 
                         elif back.lower() == "n":
                             system_text("\nThanks for playing! Goodbye.")
-                            break   # exit game
+                            sys.exit()
 
 
                     elif LVLSelected == "3":
                         clear()
-                        system_text("\nStill in work")
+                        system_text("Still in work")
 
                         back = input("\nDo you want to go back to Level Selection? (y/n): ")
                         if back.lower() == "y":
                             clear()
                             system_text("Please select the LVL\n")
                             system_text2("1. Level 1\n2. Level 2\n3. Level 3")
-                            LVLSelected = input("Please enter the number of the level: ")
+                            LVLSelected = input("\nPlease enter the number of the level: ")
                             continue   # go back to level selection
 
                         elif back.lower() == "n":
                             system_text("\nThanks for playing! Goodbye.")
-                            break   # exit game
+                            sys.exit()
 
                     else:
                         clear()
@@ -259,21 +325,21 @@ while True:
             #Working in Progress
             elif HowManyPlayer == "2":
                 clear()
-                loading("\nRedirecting")
+                loading("Redirecting")
                 #system_text("Select you Character\n")
-                system_text("\nStill in work")
+                system_text("Still in work")
                 
                 back = input("\nDo you want to go back to Game Mode? (y/n): ")
                 if back.lower() == "y":
                     clear()
-                    system_text("Please select how many players\n")
-                    system_text2("1. One Player \n2. Two Player")
+                    system_text("Please select how many players")
+                    system_text2("\n1. One Player \n2. Two Player")
                     HowManyPlayer = input("\nEnter your selected mode here: ")
                     continue #go back to game mode
 
                 elif back.lower() == "n":
                     system_text("\nThanks for playing! Goodbye.")
-                    break   # exit game
+                    sys.exit()
 
             else: 
                 clear()
@@ -286,7 +352,7 @@ while True:
     #Working in Progress
     elif GameSelected == "2":
         clear()
-        loading("\nRedirecting")
+        loading("Redirecting")
         system_text(f"Starting World {GameSelected}...")
         system_text("\nStill in work")
 
@@ -295,27 +361,28 @@ while True:
         if back.lower() == "y":
             clear()
             system_text("\nPlease select the world you want to play....")
-            system_text2("1. SWU School\n2. Philippines River\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
+            system_text2("\n1. Purrlantic Shores\n2. Whiskerwood Hollow\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
             GameSelected = input("Enter world number to start: ")
+            clear()
             continue   # go back to world selection
 
         elif back.lower() == "n":
-            system_text("\nThanks for playing! Goodbye.")
-            break   # exit game
+                system_text("\nThanks for playing! Goodbye.")
+                sys.exit()
 
     
 
 #Onward is not playable!!!
     elif GameSelected == "3" or GameSelected == "4" or GameSelected == "5":
         clear()
-        print("\nThat world is not ready yet! Please choose again.\n")
-        system_text2("1. SWU School\n2. Philippines River\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
+        print("That world is not ready yet! Please choose again.\n")
+        system_text2("1. Purrlantic Shores\n2. Whiskerwood Hollow\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
         GameSelected = input("Enter world number to start: ")
         clear()
         loading("Redirecting")
 
     else:
         clear()
-        print("\nInvalid choice! Please try again.\n")
+        print("Invalid choice! Please try again.\n")
         system_text2("1. Purrlantic Shores\n2. Whiskerwood Hollow\n3. Coming Soon...\n4. Coming Soon...\n5. Coming Soon...\n")
         GameSelected = input("Enter world number to start: ")

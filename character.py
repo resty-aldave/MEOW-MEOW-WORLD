@@ -18,4 +18,16 @@ characters = {
         "ATK":20,
         "DEF":2
     },
+    "Character Four" : {
+        "NAME": "Jinxpaw",
+        "HP": 100,
+        "ATK":67,
+        "DEF":18
+    },
+    "Character Five" : {
+        "NAME": "Chairman Meow",
+        "HP": 100,
+        "ATK":24,
+        "DEF":14
+    },
 }

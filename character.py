@@ -1,5 +1,6 @@
 
 characters = { 
+    
     "Character One" : {  #Mao ni ang Cnum didto dapit sa for loop
         "NAME": "Lord Flufflebottom",
         "HP": 100,

@@ -4,6 +4,7 @@ import random #maybe i'll delete this
 import math #maybe i'll delete this
 from character import characters
 from Question import lvl1
+from Weapon import Weapons
 
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
@@ -103,19 +104,22 @@ def ask_question(question, correct_answer, stats):
                 sys.exit()
 
 
-def randomHpDeductionFighting(text, stats):
+def randomHpDeductionFighting(text, stats, Wstats):
 
     system_text(text)
 
-    DMG = random.randint(20, 25)
+    DMG = random.randint(20, 60)
     stats["HP"] -= DMG
-    stats["HP"] += ((stats["DEF"]/100)*stats["HP"])
+    stats["HP"] += ((stats["DEF"]/100)*stats["HP"]+((Wstats["HP"]/100)*stats["HP"])+((Wstats["DEF"]/100)*stats["HP"]))
 
     print(f"{stats['NAME']} (Updated Stats)")
 
     for key, value in stats.items():
         if key != "NAME":
-            print(f"{key}:{round(value)}")
+            if stats["HP"] > 100:
+                if key != "HP":
+                    print("HP: 100")
+                    print(f"{key}:{round(value)}")
     print()
 
     if stats["HP"] <= 0:
@@ -233,7 +237,26 @@ while True:
                                     
                                     #boss level
                                     #put auto deduct health
-                                    randomHpDeductionFighting("Fighting Wave 1\n", stats)
+                                    #weapon
+                                    clear2()
+                                    system_text("Wave one started!")
+                                    system_text("⚔️")
+                                    clear2()
+                                    clear2()
+                                    system_text("You found a weapon!!!")
+                                    for WeapNum, Wstats in Weapons.items():
+                                        print(f"\n{Wstats['NAME']}")
+                                        for key, value in Wstats.items():
+                                            if key != "NAME":
+                                                if key != "CORRECT":
+                                                    print(f"{key}: {value}")
+                                    
+                                    ChooseWeap = input("\nTo equip a weapon enter the correct answer! :")
+######ni skip siya diring dapita ug ni next sa "In the Neon"
+                                    if ChooseWeap == Wstats["CORRECT"]:
+                                        randomHpDeductionFighting("Wave 1 Completed\n", stats, Wstats)
+
+                                    
                                     
                                     clear2()
                                     

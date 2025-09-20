@@ -110,16 +110,17 @@ def randomHpDeductionFighting(text, stats, Wstats):
 
     DMG = random.randint(20, 60)
     stats["HP"] -= DMG
-    stats["HP"] += ((stats["DEF"]/100)*stats["HP"]+((Wstats["HP"]/100)*stats["HP"])+((Wstats["DEF"]/100)*stats["HP"]))
+    reduction = ((stats["DEF"]/100)*stats["HP"]+((Wstats["HP"]/100)*stats["HP"])+((Wstats["DEF"]/100)*stats["HP"]))
+    stats["HP"] += (DMG - reduction)
 
     print(f"{stats['NAME']} (Updated Stats)")
 
     for key, value in stats.items():
         if key != "NAME":
-            if stats["HP"] > 100:
-                if key != "HP":
-                    print("HP: 100")
-                    print(f"{key}:{round(value)}")
+            if key == "HP" and value > 100:
+                print("HP: 100")
+            else:
+                print(f"{key}:{round(value)}")
     print()
 
     if stats["HP"] <= 0:
@@ -244,6 +245,7 @@ while True:
                                     clear2()
                                     clear2()
                                     system_text("You found a weapon!!!")
+
                                     for WeapNum, Wstats in Weapons.items():
                                         print(f"\n{Wstats['NAME']}")
                                         for key, value in Wstats.items():
@@ -253,10 +255,14 @@ while True:
                                     
                                     ChooseWeap = input("\nTo equip a weapon enter the correct answer! :")
 ######ni skip siya diring dapita ug ni next sa "In the Neon"
-                                    if ChooseWeap == Wstats["CORRECT"]:
-                                        randomHpDeductionFighting("Wave 1 Completed\n", stats, Wstats)
 
+                                    for Weapnum, Wstats in Weapons.items():
+                                        if int(ChooseWeap) == Wstats["CORRECT"]:
+                                                randomHpDeductionFighting("Wave 1 Completed\n", stats, Wstats)
+                                                break
                                     
+
+                                    test = input("TEST!!!")
                                     
                                     clear2()
                                     

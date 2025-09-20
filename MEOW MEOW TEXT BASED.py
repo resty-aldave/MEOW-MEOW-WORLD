@@ -58,7 +58,7 @@ def paragraph(text, delay=0.1, color="\033[97m"):
     print()
 
 
-def ask_question(question, correct_answer, stats):
+def ask_question(question, correct_answer, stats): #MAYBE ILL DELETE THIS
     wronganswercount = 0
     #Ask a T/F question and update stats if wrong.
     while True:
@@ -273,7 +273,7 @@ while True:
                                     
                                     #boss level
                                     #put auto deduct health
-                                    randomHpDeductionFighting("Fighting Wave 2\n", stats)
+                                    #add hpreduction
 
                                     clear2()
                                     

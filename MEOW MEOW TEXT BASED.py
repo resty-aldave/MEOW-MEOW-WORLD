@@ -50,7 +50,7 @@ def system_text2(text, delay=0.01, color="\033[97m"):#change to 0.3
         time.sleep(delay)
     print()
 
-def paragraph(text, delay=0.1, color="\033[97m"):
+def paragraph(text, delay=0.05, color="\033[97m"):#change to 0.1
     for char in text:
         sys.stdout.write(color + char + "\033[97m")
         sys.stdout.flush()
@@ -108,17 +108,18 @@ def randomHpDeductionFighting(text, stats, Wstats):
 
     system_text(text)
 
-    DMG = random.randint(20, 60)
-    stats["HP"] -= DMG
+    DMG = random.randint(50, 75)
+    #stats["HP"] -= DMG
     reduction = ((stats["DEF"]/100)*stats["HP"]+((Wstats["HP"]/100)*stats["HP"])+((Wstats["DEF"]/100)*stats["HP"]))
-    stats["HP"] += (DMG - reduction)
+    stats["HP"] -= (DMG - reduction)
 
     print(f"{stats['NAME']} (Updated Stats)")
 
     for key, value in stats.items():
         if key != "NAME":
             if key == "HP" and value > 100:
-                print("HP: 100")
+                stats["HP"] = 100
+                print(f"{key}:{round(value)}")
             else:
                 print(f"{key}:{round(value)}")
     print()
@@ -254,7 +255,7 @@ while True:
                                                     print(f"{key}: {value}")
                                     
                                     ChooseWeap = input("\nTo equip a weapon enter the correct answer! :")
-######ni skip siya diring dapita ug ni next sa "In the Neon"
+
 
                                     for Weapnum, Wstats in Weapons.items():
                                         if int(ChooseWeap) == Wstats["CORRECT"]:
@@ -262,7 +263,7 @@ while True:
                                                 break
                                     
 
-                                    test = input("TEST!!!")
+                                    NEXT = input("Enter to NEXT")
                                     
                                     clear2()
                                     
@@ -273,7 +274,31 @@ while True:
                                     
                                     #boss level
                                     #put auto deduct health
-                                    #add hpreduction
+                                    #weapon
+                                    clear2()
+                                    system_text("Wave two started!")
+                                    system_text("⚔️")
+                                    clear2()
+                                    clear2()
+                                    system_text("You found a weapon!!!")
+
+                                    for WeapNum, Wstats in Weapons.items():
+                                        print(f"\n{Wstats['NAME']}")
+                                        for key, value in Wstats.items():
+                                            if key != "NAME":
+                                                if key != "CORRECT":
+                                                    print(f"{key}: {value}")
+                                    
+                                    ChooseWeap = input("\nTo equip a weapon enter the correct answer! :")
+
+
+                                    for Weapnum, Wstats in Weapons.items():
+                                        if int(ChooseWeap) == Wstats["CORRECT"]:
+                                                randomHpDeductionFighting("Wave 2 Completed\n", stats, Wstats)
+                                                break
+                                    
+
+                                    NEXT = input("Enter to NEXT")
 
                                     clear2()
                                     
@@ -283,7 +308,31 @@ while True:
 
                                     #boss level
                                     #put auto deduct health
-                                    randomHpDeductionFighting("Fighting Wave 3\n", stats)
+                                    #weapon
+                                    clear2()
+                                    system_text("Wave three started!")
+                                    system_text("⚔️")
+                                    clear2()
+                                    clear2()
+                                    system_text("You found a weapon!!!")
+
+                                    for WeapNum, Wstats in Weapons.items():
+                                        print(f"\n{Wstats['NAME']}")
+                                        for key, value in Wstats.items():
+                                            if key != "NAME":
+                                                if key != "CORRECT":
+                                                    print(f"{key}: {value}")
+                                    
+                                    ChooseWeap = input("\nTo equip a weapon enter the correct answer! :")
+
+
+                                    for Weapnum, Wstats in Weapons.items():
+                                        if int(ChooseWeap) == Wstats["CORRECT"]:
+                                                randomHpDeductionFighting("Wave 3 Completed\n", stats, Wstats)
+                                                break
+                                    
+
+                                    NEXT = input("Enter to NEXT")
                                     
                                     clear2()
                                     

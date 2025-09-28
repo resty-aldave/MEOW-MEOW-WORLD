@@ -108,7 +108,7 @@ def randomHpDeductionFighting(text, stats, Wstats):
 
     system_text(text)
 
-    DMG = random.randint(50, 75)
+    DMG = random.randint(60, 75)
     #stats["HP"] -= DMG
     reduction = ((stats["DEF"]/100)*stats["HP"]+((Wstats["HP"]/100)*stats["HP"])+((Wstats["DEF"]/100)*stats["HP"]))
     stats["HP"] -= (DMG - reduction)
@@ -125,18 +125,15 @@ def randomHpDeductionFighting(text, stats, Wstats):
     print()
 
     if stats["HP"] <= 0:
+        stats["HP"] = 0
         clear()
         print("\n💀 GAME OVER! You have no HP left.\n")
         print(f"{stats['NAME']} (Updated Stats)")
-        print("HP: 0")
         for key, value in stats.items():
             if key != "NAME":
-                pass
-                if key != "HP":
-                    print(f"{key}: {value}")
-            print()
-            print()
-            sys.exit()
+                print(f"{key}: {value}")
+        print()
+        sys.exit()
 
 
 def levelcomplete(text, delay = 0.05):
@@ -259,7 +256,7 @@ while True:
 
                                     for Weapnum, Wstats in Weapons.items():
                                         if int(ChooseWeap) == Wstats["CORRECT"]:
-                                                randomHpDeductionFighting("Wave 1 Completed\n", stats, Wstats)
+                                                randomHpDeductionFighting("\nWave 1 Completed\n", stats, Wstats)
                                                 break
                                     
 
@@ -294,7 +291,7 @@ while True:
 
                                     for Weapnum, Wstats in Weapons.items():
                                         if int(ChooseWeap) == Wstats["CORRECT"]:
-                                                randomHpDeductionFighting("Wave 2 Completed\n", stats, Wstats)
+                                                randomHpDeductionFighting("\nWave 2 Completed\n", stats, Wstats)
                                                 break
                                     
 
@@ -328,7 +325,7 @@ while True:
 
                                     for Weapnum, Wstats in Weapons.items():
                                         if int(ChooseWeap) == Wstats["CORRECT"]:
-                                                randomHpDeductionFighting("Wave 3 Completed\n", stats, Wstats)
+                                                randomHpDeductionFighting("\nWave 3 Completed\n", stats, Wstats)
                                                 break
                                     
 

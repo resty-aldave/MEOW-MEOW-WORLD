@@ -16,7 +16,7 @@ Weapons = {
     },
     "Weapon Three" : {
         "CORRECT": 76,
-        "NAME": "Moonfang Dagger [(100÷4)×3+1]",
+        "NAME": "Glaive of the North [(100÷4)×3+1]",
         "HP": 9,
         "ATK":12,
         "DEF":2

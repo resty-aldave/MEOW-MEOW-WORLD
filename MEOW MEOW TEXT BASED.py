@@ -113,15 +113,14 @@ def randomHpDeductionFighting(text, stats, Wstats):
     reduction = ((stats["DEF"]/100)*stats["HP"]+((Wstats["HP"]/100)*stats["HP"])+((Wstats["DEF"]/100)*stats["HP"]))
     stats["HP"] -= (DMG - reduction)
 
-    print(f"{stats['NAME']} (Updated Stats)")
+    if stats["HP"] > 100:
+        stats["HP"] = 100
 
+    print(f"{stats['NAME']} (Updated Stats)")
     for key, value in stats.items():
         if key != "NAME":
-            if key == "HP" and value > 100:
-                stats["HP"] = 100
-                print(f"{key}:{round(value)}")
-            else:
-                print(f"{key}:{round(value)}")
+            print(f"{key}:{round(value)}")
+
     print()
 
     if stats["HP"] <= 0:

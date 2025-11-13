@@ -1,9 +1,8 @@
 import os
 import sys, time
-import random #maybe i'll delete this 
-import math #maybe i'll delete this
+import random 
+import math
 from character import characters
-from Question import lvl1
 from Weapon import Weapons
 
 def clear():
@@ -14,7 +13,7 @@ def clear2 (delay = 2):
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def loading(text="Loading", dots=3, delay=0.1):#change to 0.5
+def loading(text="Loading", dots=3, delay=0.5):#change to 0.5
     print()
     for i in range(dots):
         sys.stdout.write("\r" + text + "." * (i+1))
@@ -22,35 +21,35 @@ def loading(text="Loading", dots=3, delay=0.1):#change to 0.5
         time.sleep(delay)
     clear()
 
-def start(text, delay=0.01, color="\033[31m"):#change to 0.5
+def start(text, delay=0.05, color="\033[31m"):#change to 0.5
     for char in text:
         sys.stdout.write(color + char + "\033[31m")
         sys.stdout.flush()
         time.sleep(delay)
     print()
 
-def welcome_text(text, delay=0.01, color="\033[92m"):#change to 0.5
+def welcome_text(text, delay=0.05, color="\033[92m"):#change to 0.5
     for char in text:
         sys.stdout.write(color + char + "\033[0m")
         sys.stdout.flush()
         time.sleep(delay)
     print()
 
-def system_text(text, delay=0.01, color="\033[97m"):#change to 0.5
+def system_text(text, delay=0.05, color="\033[97m"):#change to 0.5
     for char in text:
         sys.stdout.write(color + char + "\033[97m")
         sys.stdout.flush()
         time.sleep(delay)
     print()
 
-def system_text2(text, delay=0.01, color="\033[97m"):#change to 0.3
+def system_text2(text, delay=0.05, color="\033[97m"):#change to 0.3
     for char in text:
         sys.stdout.write(color + char + "\033[97m")
         sys.stdout.flush()
         time.sleep(delay)
     print()
 
-def paragraph(text, delay=0.05, color="\033[97m"):#change to 0.1
+def paragraph(text, delay=0.1, color="\033[97m"):#change to 0.1
     for char in text:
         sys.stdout.write(color + char + "\033[97m")
         sys.stdout.flush()
@@ -149,7 +148,7 @@ def levelcomplete(text, delay = 0.05):
     print()
     sys.exit()
 
-def title(text, delay=0.01, color="\033[94m"):#change to 0.5
+def title(text, delay=0.05, color="\033[94m"):#change to 0.5
     for char in text:
         sys.stdout.write(color + char + "\033[94m")
         sys.stdout.flush()

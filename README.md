@@ -9,7 +9,7 @@ View the full game UI design on Figma.
 ## Authors
 
 - [Aldave, Resty S.](https://github.com/resty-aldave)
-- [Celada, Kate Loraine](https://github.com/@NonExistentUsername)
+- [Celada, Kate Loraine](https://github.com/KateCelada)
 - [Miralles, Kevin ](https://github.com/@NonExistentUsername)
 
 ## About

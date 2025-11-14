@@ -6,9 +6,6 @@ View the full game UI design on Figma.
 
 🗄 https://www.figma.com/proto/ZrZdWiBfFr6xLsNbnh6AUp/DT-GAME?node-id=1-2&t=kBiX1i5vcNN5p2M9-0&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A2&show-proto-sidebar=1
 
-![Alt text for the image](Preview/1.Main.png)
-
-
 ## Authors
 
 - [Aldave, Resty S.](https://github.com/resty-aldave)

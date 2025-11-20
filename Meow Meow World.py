@@ -1,7 +1,7 @@
 import os
 import sys, time
 import random 
-import math
+import math #maybe ill erase this
 from character import characters
 from Weapon import Weapons
 

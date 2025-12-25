@@ -45,9 +45,9 @@ Currently, the game is a text-based adventure run through the console.
 
 ## 👥 Authors
 
--   [**Aldave, Resty S.** -](https://github.com/resty-aldave)
--   [**Celada, Kate Loraine** -](https://github.com/KateCelada)
--   [**Miralles, Kevin** -](https://github.com/@NonExistentUsername)
+-   [**Aldave, Resty S.**](https://github.com/resty-aldave)
+-   [**Celada, Kate Loraine**](https://github.com/KateCelada)
+-   [**Miralles, Kevin**](https://github.com/@NonExistentUsername)
 
 ---
 
